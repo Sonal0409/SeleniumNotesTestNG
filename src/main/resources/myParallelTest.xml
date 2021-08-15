@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+  
+  <!--  -->
+<suite name="Suite1" verbose="1" parallel ="tests" thread-count="2">
+ <test name="Test1" >
+  <parameter name="input" value="edureka"/>
+  <parameter name="browser" value="Chrome"/>
+  
+
+    <classes>
+       <class name="instructrScripts.CrossBrowserTest" />
+    </classes>
+  </test> 
+
+   <test name="Test2" >
+  <parameter name="input" value="edureka"/>
+  <parameter name="browser" value="Firefox"/>
+    <classes>
+       <class name="instructrScripts.CrossBrowserTest" />
+    </classes>
+  </test> 
+</suite>

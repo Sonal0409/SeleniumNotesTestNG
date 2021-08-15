@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="myapptest" verbose="2">
+ <test name="MailboxTest">
+  <groups>
+    <run>
+<!--       <include name="createEmail"></include>
+      <include name="ModifyEmail"></include> -->
+      <exclude name="DeleteEmail"/>
+   </run>
+  </groups>
+   <classes>
+    <class name="com.qa.TestNGScripts.TestNGGroups"/>
+   </classes>
+ </test>
+</suite>

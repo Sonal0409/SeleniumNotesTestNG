@@ -1,0 +1,35 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="mytesting" parallel="tests" thread-count="3" verbose="1">
+ <test name="Test1">
+  <parameter name="URL" value="https://www.wikipedia.org/"/>
+  <parameter name="input1" value="Selenium Automation"/>
+  <parameter name="Username" value="admin"/>
+  <parameter name="Password" value="admin@123"/>
+   <classes>
+     <class name="com.qa.TestNGScripts.ParameterDemoXML"/>
+   </classes>
+ </test>
+ 
+ <test name="Test2">
+  <parameter name="URL" value="https://www.wikipedia.org/"/>
+  <parameter name="input1" value="Appium Automation"/>
+  <parameter name="Username" value="user1"/>
+  <parameter name="Password" value="user1@123"/>
+ 
+   <classes>
+     <class name="com.qa.TestNGScripts.ParameterDemoXML"/>
+   </classes>
+ </test>
+ 
+  <test name="Test3">
+  <parameter name="URL" value="https://www.wikipedia.org/"/>
+  <parameter name="input1" value="LoadRunner Automation"/>
+  <parameter name="Username" value="user2"/>
+  <parameter name="Password" value="user2@123"/>
+ 
+   <classes>
+     <class name="com.qa.TestNGScripts.ParameterDemoXML"/>
+   </classes>
+ </test>
+</suite>

@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="mytesting" verbose="1">
+
+<parameter name="parm1" value="Selenium"/>
+<parameter name="param2" value="LoadRunner"/>
+<parameter name="param3" value="UFT"/>
+
+ <test name="Test1">
+  <classes>
+     <class name="com.qa.TestNGScripts.ParametersDemo1"/>
+  </classes>
+ 
+ </test>
+</suite>
