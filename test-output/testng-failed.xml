@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [mytesting]">
-  <test thread-count="5" name="Test3(failed)">
-    <parameter name="browser" value="Edge"/>
-    <parameter name="input1" value="LoadRunner Automation"/>
-    <parameter name="URL" value="https://www.wikipedia.org/"/>
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.qa.TestNGScripts.CrossBrowserTest">
+      <class name="instructrScripts.IFramesDemo">
         <methods>
-          <include name="OpenBrowser"/>
-          <include name="TestWikiHomePage"/>
+          <include name="FrameDemoTest"/>
         </methods>
-      </class> <!-- com.qa.TestNGScripts.CrossBrowserTest -->
+      </class> <!-- instructrScripts.IFramesDemo -->
     </classes>
-  </test> <!-- Test3(failed) -->
-</suite> <!-- Failed suite [mytesting] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

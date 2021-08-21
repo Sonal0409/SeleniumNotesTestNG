@@ -42,6 +42,7 @@ public class CrossBrowserTest {
 		
 	}
 	
+	
 	@Parameters({"input1"})
 	@Test(priority='1')
 	public void TestWikiHomePage(String input1) throws InterruptedException
