@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="instructrScripts.IFramesDemo">
+      <class name="com.qa.TestNGScripts.FramesDemo">
         <methods>
-          <include name="FrameDemoTest"/>
+          <include name="FrameTestDemo"/>
         </methods>
-      </class> <!-- instructrScripts.IFramesDemo -->
+      </class> <!-- com.qa.TestNGScripts.FramesDemo -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

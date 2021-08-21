@@ -14,20 +14,19 @@ package com.Utility;
 		static Workbook book;
 		static Sheet sheet;
 		
-		public static String testdata_sheet_path = "C:\\Users\\vishal mittal\\Desktop\\testdata.xlsx";
+		public static String testdata_sheet_path = "C:\\Users\\vishal mittal\\Desktop\\newdata.xlsx";
 		
 		public static Object[][] getTestData(String sheetName) 
 		{
 			
-			FileInputStream file= null;
-			
-				
-					try {
-						file= new FileInputStream(testdata_sheet_path);
-					} catch (FileNotFoundException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+			FileInputStream file = null;
+			try {
+				file = new FileInputStream(testdata_sheet_path);
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+					
 			
 			
 			
