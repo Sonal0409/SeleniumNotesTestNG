@@ -18,8 +18,8 @@ public class SwitchWindow {
 		// It will return the parent window name as a String
 		String parent=driver.getWindowHandle();
 		 
-		// This will return the number of windows opened by Webdriver and will return Set of St//rings
-		Set<String>s1=driver.getWindowHandles();
+		// This will return the number of windows opened by Webdriver and will return Set of Strings
+		Set<String> s1=driver.getWindowHandles();
 		 
 		Thread.sleep(5000);
 		// Now we will iterate using Iterator

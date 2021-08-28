@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="instructrScripts.MouseOverDemo">
+      <class name="com.qa.aug28.SwitchWindow1">
         <methods>
-          <include name="MouseoverTest"/>
+          <include name="SwitchwindowTest"/>
         </methods>
-      </class> <!-- instructrScripts.MouseOverDemo -->
+      </class> <!-- com.qa.aug28.SwitchWindow1 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
