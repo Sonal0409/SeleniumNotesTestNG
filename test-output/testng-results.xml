@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="13922" started-at="2021-08-21T17:58:09Z" finished-at="2021-08-21T17:58:23Z">
+  <suite name="Default suite" duration-ms="8674" started-at="2021-08-28T13:50:08Z" finished-at="2021-08-28T13:50:17Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="13922" started-at="2021-08-21T17:58:09Z" finished-at="2021-08-21T17:58:23Z">
-      <class name="com.qa.TestNGScripts.FramesDemo">
-        <test-method status="PASS" signature="FrameTestDemo()[pri:0, instance:com.qa.TestNGScripts.FramesDemo@1275dab]" name="FrameTestDemo" duration-ms="13836" started-at="2021-08-21T17:58:09Z" finished-at="2021-08-21T17:58:23Z">
+    <test name="Default test" duration-ms="8674" started-at="2021-08-28T13:50:08Z" finished-at="2021-08-28T13:50:17Z">
+      <class name="instructrScripts.Scrolling">
+        <test-method status="PASS" signature="scrolling()[pri:0, instance:instructrScripts.Scrolling@1275dab]" name="scrolling" duration-ms="8611" started-at="2021-08-28T13:50:08Z" finished-at="2021-08-28T13:50:17Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- FrameTestDemo -->
-      </class> <!-- com.qa.TestNGScripts.FramesDemo -->
+        </test-method> <!-- scrolling -->
+      </class> <!-- instructrScripts.Scrolling -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
