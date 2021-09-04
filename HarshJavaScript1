@@ -1,0 +1,159 @@
+package Week5.Day1.Training;
+
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class CaseStudyIIHandlingAdvancedWebElements {
+	public static WebDriver driver = new ChromeDriver();;
+	//public static String URL = "https://www.flipkart.com/";
+
+	@BeforeTest
+	public void launchBrowser() throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Harsh\\Learnings\\eclipse\\eclipse-workspace\\Week5Day1Training\\chromedriver.exe");
+		//String URL = "https://www.flipkart.com/";
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+		driver.get("https://www.flipkart.com/");
+		Thread.sleep(3000);
+	}
+
+	@Test(groups = {"Sanity"},priority = '1')
+	public void handleModal() throws InterruptedException {
+		Thread.sleep(3000);
+		WebElement closeButton = driver.findElement(By.xpath("//div[@class='_2Sn47c']/descendant::button[1]"));
+		closeButton.click();
+
+		Thread.sleep(1000);
+
+	}
+
+	@Test(groups = {"Regression"},priority = '2')
+	public void mouseHover() throws InterruptedException {
+		WebElement electronicsDropDown = driver
+				.findElement(By.xpath("//div[@class='InyRMC _3Il5oO']/descendant::div[23]"));
+
+		Actions act = new Actions(driver);
+		act.moveToElement(electronicsDropDown).build().perform();
+
+		Thread.sleep(2000);
+
+		WebElement dropdownElementAudio = driver.findElement(By.xpath("//div[@class='_1y9fNR']/descendant::a[1]"));
+		dropdownElementAudio.click();
+		Thread.sleep(2000);
+
+		WebElement electronicsDropDown1 = driver.findElement(By.xpath("//div[@id='container']/descendant::span[3]"));
+
+		act.moveToElement(electronicsDropDown1).build().perform();
+		Thread.sleep(2000);
+
+		WebElement mobileEleMI = driver.findElement(By.xpath("//div[@class='_1fwVde']/child::a[2]"));
+		mobileEleMI.click();
+		Thread.sleep(2000);
+
+	}
+
+	@Test(groups = {"Regression"},priority = '3')
+	public void verifyLatestfromMIText() {
+		WebElement latestfromMITextWE = driver.findElement(By.xpath("//div[@class='_1D76KH']/child::p[1]"));
+
+		String latestfromMIActualText = "Latest from MI";
+		String latestfromMIText = latestfromMITextWE.getText();
+
+		boolean verifyText = latestfromMIText.contains(latestfromMIActualText);
+
+		Assert.assertTrue(verifyText);
+		System.out.println("Label" + latestfromMIText + " contains: " + latestfromMIActualText + " Test Case Passed");
+
+	}
+
+	@Test(groups = {"Regression"},priority = '4')
+	public void changePriceSlider() throws InterruptedException {
+		WebElement priceSliderRight = driver.findElement(By.xpath("//div[@class='_1KOcBL']/descendant::div[34]"));
+		Actions act = new Actions(driver);
+
+		act.clickAndHold(priceSliderRight).moveByOffset(-2, 0).release(priceSliderRight).build().perform();
+		Thread.sleep(2000);
+
+		WebElement maxRangeDropDown = driver.findElement(By.xpath("//div[@class='_2b0bUo']/descendant::select[2]"));
+		Select selectDropDown = new Select(maxRangeDropDown);
+		selectDropDown.selectByIndex(2);
+		Thread.sleep(2000);
+
+	}
+
+	@Test(groups = {"Regression"},priority = '5')
+	public void searchBar() throws InterruptedException {
+		String inputText = "redmi go (black, 8 gb)";
+		WebElement searchInputBox = driver.findElement(By.xpath("//div[@class='_1cmsER']/descendant::input[1]"));
+		WebElement searchSubmitButton = driver.findElement(By.xpath("//div[@class='_1cmsER']/descendant::button[1]"));
+		searchInputBox.sendKeys(inputText);
+		Thread.sleep(1000);
+
+		searchSubmitButton.click();
+		Thread.sleep(2000);
+
+	}
+
+	@Test(groups = {"Regression"},priority = '6')
+	public void selectProduct() throws InterruptedException {
+		WebElement selectProductLink = driver.findElement(By.xpath("//div[@class='col col-7-12']/child::div[1]"));
+		selectProductLink.click();
+		Thread.sleep(2000);
+		
+		ArrayList<String> windowHandle = new ArrayList<String>(driver.getWindowHandles());
+
+		driver.switchTo().window(windowHandle.get(1));
+		Thread.sleep(2000);
+		
+		WebElement productPriceWE = driver.findElement(By.xpath("//div[@class='aMaAEs']/descendant::div[7]"));
+		String productPrice = productPriceWE.getText();
+		System.out.println(productPrice);
+		
+		String trimProductPrice = productPrice.substring(1).replace(",", "");
+		System.out.println(trimProductPrice);
+		
+		float pPrice = Float.parseFloat(trimProductPrice);
+		if(pPrice>=0) {
+			Assert.assertTrue(true);
+			System.out.println("Select product price is greater or equals to 0: " +pPrice);
+		}
+		else {
+			Assert.assertTrue(false);
+			System.out.println("Select product price is less 0: " +pPrice);
+		}
+
+		
+	}
+	
+	@Test(priority = '7')
+	public void verifyThumbNail() throws InterruptedException {
+		WebElement productThumbNailWE = driver.findElement(By.xpath("//div[@class='_1AuMiq']/descendant::div[3]"));
+		
+		productThumbNailWE.click();
+		Thread.sleep(2000);
+		
+		driver.switchTo().frame(0);
+		Thread.sleep(2000);
+		
+		WebElement playButton = driver.findElement(By.xpath("//div[@class='ytp-cued-thumbnail-overlay']/descendant::button[1]"));
+		
+		boolean playButtonDisplayed = playButton.isDisplayed();
+		
+		Assert.assertTrue(playButtonDisplayed);
+		System.out.println("Play Button display: " +playButtonDisplayed);
+		
+		driver.quit();
+	}
+
+}
