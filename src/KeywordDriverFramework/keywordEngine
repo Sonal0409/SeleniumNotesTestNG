@@ -1,0 +1,142 @@
+package com.qa.keyoword.engine;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import com.qa.keyword.base.Base;
+
+public class KeywordEngine {
+	
+	public WebDriver driver;
+	
+	public Properties prop;
+	
+	public Base base;
+	public static Workbook book;
+	
+	public static Sheet sheet;
+	
+	public String Scenario_Sheet_Path= "C:\\Users\\vishal mittal\\Desktop\\keyword.xlsx";
+	
+	public void startExecution(String sheetName) throws FileNotFoundException
+	{
+		String locatorName=null;
+		String locatorvalue=null;
+		FileInputStream file= null;
+		
+		try {
+			file = new FileInputStream(Scenario_Sheet_Path);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+		book=	WorkbookFactory.create(file);
+		} catch (InvalidFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		sheet=book.getSheet(sheetName);
+		
+		int k=0;
+		for(int i=0; i<sheet.getLastRowNum();i++)
+		{
+			try
+			{
+			// reading 2nd column value
+			String locatorcolvalue=sheet.getRow(i+1).getCell(k+1).toString().trim();
+			
+			if(!locatorcolvalue.equalsIgnoreCase("NA"))
+			{
+				
+				//locatorcolvalue = name=UserName
+				// split using (=) : 2 parts : name and UserName
+				
+				locatorName= locatorcolvalue.split("=")[0].trim();
+				System.out.println("locatorsplit"+locatorName);
+				locatorvalue= locatorcolvalue.split("=")[1].trim();
+				System.out.println("locatorsplit2"+locatorvalue);
+			}
+			// values from 3rd column
+
+			String action =sheet.getRow(i+1).getCell(k+2).toString().trim();
+			System.out.println(action);
+			String value =sheet.getRow(i+1).getCell(k+3).toString().trim();
+			System.out.println(value);
+			// write switch and press ctl+space key
+			
+
+			switch(action)
+			{
+			case "open browser":
+				System.setProperty("webdriver.chrome.driver",
+						"C:\\Users\\vishal mittal\\Downloads\\chromedriver_win32 (3)\\chromedriver.exe");
+				driver= new ChromeDriver();
+				
+			break;
+			
+			case "enter url":
+				driver.get(value);
+				break;
+				
+			case"quit":
+				driver.close();
+				break;
+				
+				default:
+					break;
+			}
+			
+			switch(locatorName)
+			{
+			case "name":
+				WebElement element = driver.findElement(By.name(locatorvalue));
+				if(action.equalsIgnoreCase("sendkeys"))
+				{
+				element.clear();
+				Thread.sleep(2000);
+				element.sendKeys(value);
+				}
+				else if(action.equalsIgnoreCase("click"))
+				{
+					Thread.sleep(2000);
+					element.click();
+				}
+				locatorName=null;
+			break;
+			
+			default:
+					break;
+			}
+			
+	
+
+			
+		}
+			catch(Exception e){
+			}
+			}
+		
+	
+	
+	}
+
+	
+
+}
