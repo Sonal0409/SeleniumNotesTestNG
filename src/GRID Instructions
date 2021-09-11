@@ -1,0 +1,18 @@
+cd C:\Grid
+
+Execute this to connect to hub
+
+java -jar selenium-server-standalone-3.141.59.jar -role hub -port 4545
+
+Hub will be up & running
+
+go to browser and give localhost:4545
+
+grid will be available --go to console.. no node yet
+
+open new cmd
+
+java -Dwebdriver.chrome.driver="C:\Grid\chromedriver.exe" -jar selenium-server-standalone-3.141.59.jar -role node -hub http://192.168.1.14:4545/grid/register/ -port 5757
+
+
+java -Dwebdriver.chrome.driver="C:\Grid\chromedriver.exe" -Dwebdriver.gecko.driver="C:\Grid\geckodriver.exe" -jar selenium-server-standalone-3.141.59.jar -role node -hub http://192.168.1.14:4545/grid/register/ -port 5757
